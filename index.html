@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mastering Derivatives: Product, Quotient & Chain Rules</title>
+<!-- 引入 MathJax 用于完美渲染数学公式 -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- 引入 Tailwind CSS 让排版现代且美观 -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+.math-card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- 顶部导航栏 -->
+<header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
+<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+<h1 class="text-xl font-bold tracking-wide">Calculus CCT: Derivatives</h1>
+<nav class="space-x-6 text-sm font-medium">
+<a href=" " class="hover:text-indigo-200 transition">Team</a >
+<a href="#lessons" class="hover:text-indigo-200 transition">Lessons</a >
+<a href="#homework" class="hover:text-indigo-200 transition">Homework</a >
+<a href="#assessments" class="hover:text-indigo-200 transition">Assessments</a >
+</nav>
+</div>
+</header>
+<!-- 主体内容区 -->
+<main class="flex-grow max-w-6xl mx-auto px-6 py-10 space-y-12 w-full">
+<!-- 页面主标题区块 -->
+<section class="text-center space-y-4">
+<h2 class="text-4xl font-extrabold text-indigo-900">Derivative Rules Mastery</h2>
+<p class="text-lg text-slate-600 max-w-2xl mx-auto">
+Welcome to our MCV4U Calculus Final Project. Explore the core rules of differentiation: Product, Quotient, and Chain rules with interactive videos, exercises, and assessments.
+</p >
+</section>
+<!-- 教师/小组成员简介 -->
+<section id="about" class="math-card p-8">
+<h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">Instructors & Team</h3>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border">
+<div class="w-16 h-16 bg-indigo-200 rounded-full flex items-center justify-center text-indigo-800 font-bold text-xl">P1</div>
+<div>
+<h4 class="font-bold text-lg text-slate-800">Partner 1 Name</h4>
+<p class="text-sm text-slate-500">Curriculum Developer & Lead Presenter</p >
+<p class="text-xs text-slate-400 mt-1">Specialized in Product & Quotient Rules.</p >
+</div>
+</div>
+<div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border">
+<div class="w-16 h-16 bg-indigo-200 rounded-full flex items-center justify-center text-indigo-800 font-bold text-xl">P2</div>
+<div>
+<h4 class="font-bold text-lg text-slate-800">Partner 2 Name</h4>
+<p class="text-sm text-slate-500">Video Producer & Assessment Designer</p >
+<p class="text-xs text-slate-400 mt-1">Specialized in Chain Rule & Problem Sets.</p >
+</div>
+</div>
+</div>
+</section>
+<!-- 教学视频板块 -->
+<section id="lessons" class="math-card p-8 space-y-6">
+<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Instructional Video Lessons (Total ~10 mins)</h3>
+<p class="text-slate-600 text-sm">Watch our video lessons breaking down the rules of differentiation step by step.</p >
+<div class="aspect-w-16 aspect-h-9 bg-slate-900 rounded-xl overflow-hidden flex items-center justify-center text-white h-80">
+<!-- 这里可替换为你们上传到 YouTube 或其他地方的视频嵌入链接 -->
+<div class="text-center space-y-2">
+<p class="text-lg font-medium">[ Embed Your 10-Minute Video Here ]</p >
+<p class="text-xs text-slate-400">Ensure both partners contribute equally to the video narration and examples.</p >
+</div>
+</div>
+</section>
+<!-- 核心知识点梳理（公式展示） -->
+<section class="math-card p-8 space-y-6">
+<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Core Calculus Rules Summary</h3>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+<h4 class="font-bold text-indigo-900 text-lg mb-2">1. Product Rule</h4>
+<p class="text-sm text-slate-600 mb-3">Used when two functions are multiplied together.</p >
+<div class="bg-white p-3 rounded text-center font-mono text-indigo-700">
+
+
+
+</div>
+</div>
+<div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+<h4 class="font-bold text-indigo-900 text-lg mb-2">2. Quotient Rule</h4>
+<p class="text-sm text-slate-600 mb-3">Used when one function is divided by another.</p >
+<div class="bg-white p-3 rounded text-center font-mono text-indigo-700 text-sm">
+
+
+</div>
+</div>
+<div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+<h4 class="font-bold text-indigo-900 text-lg mb-2">3. Chain Rule</h4>
+<p class="text-sm text-slate-600 mb-3">Used for composite functions.</p >
+<div class="bg-white p-3 rounded text-center font-mono text-indigo-700">
+
+
+</div>
+</div>
+</div>
+</section>
+<!-- 课后作业与答案 -->
+<section id="homework" class="math-card p-8 space-y-6">
+<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Homework & Practice Problems</h3>
+<p class="text-slate-600 text-sm">Try solving these questions on your own before revealing the solutions.</p >
+<div class="space-y-4">
+<div class="p-4 bg-slate-50 rounded-lg border">
+<p class="font-semibold text-slate-800">Problem 1 (Product Rule):</p >
+<p class="text-slate-600 mt-1">Find the derivative of f(x) = (3x^2 - 1)(2x + 5)</p >
+<details class="mt-3 text-sm">
+<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">Reveal Solution</summary>
+<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1">
+<p>Let u = 3x^2 - 1 \Longrightarrow u' = 6x</p >
+<p>Let v = 2x + 5 \implies v' = 2</p >
+<p>
+
+</p >
+<p>
+
+</p >
+</div>
+</details>
+</div>
+<div class="p-4 bg-slate-50 rounded-lg border">
+<p class="font-semibold text-slate-800">Problem 2 (Chain Rule):</p >
+<p class="text-slate-600 mt-1">Find the derivative of f(x) = (4x^3 - 5)^5</p >
+<details class="mt-3 text-sm">
+<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">Reveal Solution</summary>
+<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1">
+<p>Using the chain rule: Bring down the exponent, subtract 1, then multiply by the inner derivative.</p >
+<p>
+
+</p >
+</div>
+</details>
+</div>
+</div>
+</section>
+<!-- 评测板块 (Assessments) -->
+<section id="assessments" class="math-card p-8 space-y-6">
+<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Assessments (Katc Requirements)</h3>
+<p class="text-slate-600 text-sm">Two formal assessments testing comprehensive understanding with full step-by-step solutions.</p >
+<div class="grid md:grid-cols-2 gap-6">
+<!-- Assessment 1 -->
+<div class="p-6 bg-indigo-50/50 rounded-xl border border-indigo-100 flex flex-col justify-between">
+<div class="space-y-3">
+<span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Assessment 1: Quiz</span>
+<h4 class="font-bold text-lg text-slate-800">Quotient Rule Application</h4>
+<p class="text-sm text-slate-600">
+Evaluate the derivative of the rational function:
+
+
+</p >
+</div>
+<details class="mt-4 text-sm">
+<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">View Full Solution</summary>
+<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1 text-xs">
+<p>
+
+</p >
+<p>Simplify numerator: x^2 + 6x + 4</p >
+<p>Final Answer: \frac{x^2 + 6x + 4}{(x + 3)^2}</p >
+</div>
+</details>
+</div>
+<!-- Assessment 2 -->
+<div class="p-6 bg-indigo-50/50 rounded-xl border border-indigo-100 flex flex-col justify-between">
+<div class="space-y-3">
+<span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Assessment 2: Assignment Task</span>
+<h4 class="font-bold text-lg text-slate-800">Combined Rules & Tangent Line</h4>
+<p class="text-sm text-slate-600">
+Find the equation of the tangent line to f(x) = x \cdot \sqrt{x^2 + 5} at x = 2.
+</p >
+</div>
+<details class="mt-4 text-sm">
+<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">View Full Solution</summary>
+<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1 text-xs">
+<p>1. Use Product & Chain rules to find f'(x).</p >
+<p>2. Substitute x = 2 to find slope m.</p >
+<p>3. Find point (2, f(2)).</p >
+<p>4. Point-slope form gives the final linear equation.</p >
+</div>
+</details>
+</div>
+</div>
+</section>
+</main>
+<!-- 底部版权 -->
+<footer class="bg-slate-800 text-slate-400 py-6 mt-12 text-center text-sm">
+<p>MCV4U Calculus Culminating Task (CCT) © 2026. All rights reserved.</p >
+</footer>
+</body>
+</html>
