@@ -1,195 +1,531 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mastering Derivatives: Product, Quotient & Chain Rules</title>
-<!-- 引入 MathJax 用于完美渲染数学公式 -->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<!-- 引入 Tailwind CSS 让排版现代且美观 -->
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
-.math-card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCV4U Calculus Learning Hub</title>
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6fb;
+      color: #20243a;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #171d3b;
+      color: white;
+      padding: 55px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      color: #cbd2ed;
+      font-size: 16px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #222a50;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 13px 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 7px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background: #46558e;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    section {
+      margin-bottom: 55px;
+    }
+
+    .section-title {
+      font-size: 27px;
+      color: #20294f;
+      margin-bottom: 10px;
+    }
+
+    .section-description {
+      color: #68708b;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      margin-bottom: 22px;
+      box-shadow: 0 5px 20px rgba(30,40,80,0.06);
+      border: 1px solid #e8ebf4;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .member {
+      border-top: 4px solid #6576c5;
+    }
+
+    .member h3 {
+      color: #27345f;
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #edf0ff;
+      color: #4356a2;
+      padding: 5px 11px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin: 5px 4px 5px 0;
+    }
+
+    .lesson-card h3 {
+      font-size: 23px;
+      color: #27345f;
+      margin-bottom: 8px;
+    }
+
+    .lesson-card h4 {
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: #384875;
+    }
+
+    .formula {
+      background: #f1f3fc;
+      border-left: 4px solid #6576c5;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 12px 0;
+      overflow-x: auto;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      margin-top: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #171d3b;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-note {
+      color: #777f98;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .resource-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .resource-card h3 {
+      color: #27345f;
+      font-size: 21px;
+      margin-bottom: 5px;
+    }
+
+    .resource-card p {
+      color: #737b94;
+      font-size: 14px;
+    }
+
+    .resource-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #4056a5;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #293b80;
+    }
+
+    .btn.secondary {
+      background: #e9edfa;
+      color: #35477f;
+    }
+
+    .btn.secondary:hover {
+      background: #d9e0f6;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #e2e5ef;
+      border-radius: 10px;
+      margin-top: 18px;
+      background: #f5f5f5;
+    }
+
+    footer {
+      text-align: center;
+      background: #171d3b;
+      color: #cbd2ed;
+      padding: 28px 15px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 29px;
+      }
+
+      nav {
+        gap: 3px;
+      }
+
+      nav a {
+        padding: 7px 9px;
+        font-size: 12px;
+      }
+
+      .container {
+        padding: 25px 14px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .pdf-frame {
+        height: 450px;
+      }
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col">
-<!-- 顶部导航栏 -->
-<header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
-<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-<h1 class="text-xl font-bold tracking-wide">Calculus CCT: Derivatives</h1>
-<nav class="space-x-6 text-sm font-medium">
-<a href=" " class="hover:text-indigo-200 transition">Team</a >
-<a href="#lessons" class="hover:text-indigo-200 transition">Lessons</a >
-<a href="#homework" class="hover:text-indigo-200 transition">Homework</a >
-<a href="#assessments" class="hover:text-indigo-200 transition">Assessments</a >
-</nav>
-</div>
+
+<body>
+
+<header>
+  <h1>MCV4U Calculus Learning Hub</h1>
+  <p>Understanding Calculus Through Rules, Examples and Practice</p >
+  <p>Our Calculus Culminating Project</p >
 </header>
-<!-- 主体内容区 -->
-<main class="flex-grow max-w-6xl mx-auto px-6 py-10 space-y-12 w-full">
-<!-- 页面主标题区块 -->
-<section class="text-center space-y-4">
-<h2 class="text-4xl font-extrabold text-indigo-900">Derivative Rules Mastery</h2>
-<p class="text-lg text-slate-600 max-w-2xl mx-auto">
-Welcome to our MCV4U Calculus Final Project. Explore the core rules of differentiation: Product, Quotient, and Chain rules with interactive videos, exercises, and assessments.
-</p >
-</section>
-<!-- 教师/小组成员简介 -->
-<section id="about" class="math-card p-8">
-<h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">Instructors & Team</h3>
-<div class="grid md:grid-cols-2 gap-8">
-<div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border">
-<div class="w-16 h-16 bg-indigo-200 rounded-full flex items-center justify-center text-indigo-800 font-bold text-xl">P1</div>
-<div>
-<h4 class="font-bold text-lg text-slate-800">Keith</h4>
-<p class="text-sm text-slate-500">Curriculum Developer & Lead Presenter</p >
-<p class="text-xs text-slate-400 mt-1">Specialized in Product & Quotient Rules.</p >
-</div>
-</div>
-<div class="flex items-center space-x-4 bg-slate-50 p-4 rounded-xl border">
-<div class="w-16 h-16 bg-indigo-200 rounded-full flex items-center justify-center text-indigo-800 font-bold text-xl">P2</div>
-<div>
-<h4 class="font-bold text-lg text-slate-800">Wesley</h4>
-<p class="text-sm text-slate-500">大帅哥</p >
-<p class="text-xs text-slate-400 mt-1">Specialized in Chain Rule & Problem Sets.</p >
-</div>
-</div>
-</div>
-</section>
-<!-- 教学视频板块 -->
-<section id="lessons" class="math-card p-8 space-y-6">
-<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Instructional Video Lessons (Total ~10 mins)</h3>
-<p class="text-slate-600 text-sm">Watch our video lessons breaking down the rules of differentiation step by step.</p >
-<div class="aspect-w-16 aspect-h-9 bg-slate-900 rounded-xl overflow-hidden flex items-center justify-center text-white h-80">
-<!-- 这里可替换为你们上传到 YouTube 或其他地方的视频嵌入链接 -->
-<div class="text-center space-y-2">
-<p class="text-lg font-medium">[ Embed Your 10-Minute Video Here ]</p >
-<p class="text-xs text-slate-400">Ensure both partners contribute equally to the video narration and examples.</p >
-</div>
-</div>
-</section>
-<!-- 核心知识点梳理（公式展示） -->
-<section class="math-card p-8 space-y-6">
-<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Core Calculus Rules Summary</h3>
-<div class="grid md:grid-cols-3 gap-6">
-<div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
-<h4 class="font-bold text-indigo-900 text-lg mb-2">1. Product Rule</h4>
-<p class="text-sm text-slate-600 mb-3">Used when two functions are multiplied together.</p >
-<div class="bg-white p-3 rounded text-center font-mono text-indigo-700">
+
+<nav>
+  <a href=" ">Our Team</a >
+  <a href="#lessons">Video Lessons</a >
+  <a href="#homework">Homework</a >
+  <a href="#quiz">Quiz</a >
+  <a href="#test">Test</a >
+</nav>
+
+<main class="container">
+
+  <!-- TEAM INTRODUCTION -->
+  <section id="team">
+    <h2 class="section-title">1. Meet Our Team</h2>
+    <p class="section-description">
+      Our team will introduce important differentiation rules
+      and help students understand how to apply them.
+    </p >
+
+    <div class="team-grid">
+
+      <div class="card member">
+        <h3>Keith</h3>
+        <p><strong>Teaching Topics:</strong></p >
+        <span class="tag">Basic Derivatives</span>
+        <span class="tag">Product Rule</span>
+        <p style="margin-top:12px;">
+          Keith introduces basic differentiation rules,
+          including polynomial, trigonometric and exponential
+          functions. He also explains the Product Rule.
+        </p >
+      </div>
+
+      <div class="card member">
+        <h3>Wesley</h3>
+        <p><strong>Teaching Topics:</strong></p >
+        <span class="tag">Quotient Rule</span>
+        <span class="tag">Chain Rule</span>
+        <p style="margin-top:12px;">
+          Wesley explains how to differentiate functions
+          involving division and composite functions using
+          the Quotient Rule and Chain Rule.
+        </p >
+      </div>
+
+    </div>
+  </section>
 
 
+  <!-- VIDEO LESSONS -->
+  <section id="lessons">
+    <h2 class="section-title">2. Video Lessons</h2>
+    <p class="section-description">
+      Watch our lessons to understand the main differentiation
+      rules step by step.
+    </p >
 
-</div>
-</div>
-<div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
-<h4 class="font-bold text-indigo-900 text-lg mb-2">2. Quotient Rule</h4>
-<p class="text-sm text-slate-600 mb-3">Used when one function is divided by another.</p >
-<div class="bg-white p-3 rounded text-center font-mono text-indigo-700 text-sm">
+    <!-- KEITH VIDEO -->
+    <div class="card lesson-card">
+      <h3>Lesson 1 — Keith</h3>
+      <p><strong>Basic Derivatives and Product Rule</strong></p >
 
+      <h4>Part A: Basic Derivatives</h4>
+      <p>For polynomial functions, we use the Power Rule:</p >
+      <div class="formula">
+        $$\frac{d}{dx}(x^n)=nx^{n-1}$$
+      </div>
 
-</div>
-</div>
-<div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
-<h4 class="font-bold text-indigo-900 text-lg mb-2">3. Chain Rule</h4>
-<p class="text-sm text-slate-600 mb-3">Used for composite functions.</p >
-<div class="bg-white p-3 rounded text-center font-mono text-indigo-700">
+      <p>Some important derivative rules:</p >
+      <div class="formula">
+        $$\frac{d}{dx}(\sin x)=\cos x$$
+        $$\frac{d}{dx}(\cos x)=-\sin x$$
+        $$\frac{d}{dx}(e^x)=e^x$$
+      </div>
 
+      <h4>Part B: Product Rule</h4>
+      <p>When two functions are multiplied, we use:</p >
+      <div class="formula">
+        $$y=uv$$
+        $$y'=u'v+uv'$$
+      </div>
 
-</div>
-</div>
-</div>
-</section>
-<!-- 课后作业与答案 -->
-<section id="homework" class="math-card p-8 space-y-6">
-<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Homework & Practice Problems</h3>
-<p class="text-slate-600 text-sm">Try solving these questions on your own before revealing the solutions.</p >
-<div class="space-y-4">
-<div class="p-4 bg-slate-50 rounded-lg border">
-<p class="font-semibold text-slate-800">Problem 1 (Product Rule):</p >
-<p class="text-slate-600 mt-1">Find the derivative of f(x) = (3x^2 - 1)(2x + 5)</p >
-<details class="mt-3 text-sm">
-<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">Reveal Solution</summary>
-<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1">
-<p>Let u = 3x^2 - 1 \Longrightarrow u' = 6x</p >
-<p>Let v = 2x + 5 \implies v' = 2</p >
-<p>
+      <p>
+        Differentiate the first function and multiply it by
+        the second function, then add the first function
+        multiplied by the derivative of the second function.
+      </p >
 
-</p >
-<p>
+      <div class="video-frame">
+        <iframe
+          src="https://drive.google.com/file/d/1GQYIjebxuVr78qstIAAGflfA1wBiHQL7/preview"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
 
-</p >
-</div>
-</details>
-</div>
-<div class="p-4 bg-slate-50 rounded-lg border">
-<p class="font-semibold text-slate-800">Problem 2 (Chain Rule):</p >
-<p class="text-slate-600 mt-1">Find the derivative of f(x) = (4x^3 - 5)^5</p >
-<details class="mt-3 text-sm">
-<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">Reveal Solution</summary>
-<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1">
-<p>Using the chain rule: Bring down the exponent, subtract 1, then multiply by the inner derivative.</p >
-<p>
-
-</p >
-</div>
-</details>
-</div>
-</div>
-</section>
-<!-- 评测板块 (Assessments) -->
-<section id="assessments" class="math-card p-8 space-y-6">
-<h3 class="text-2xl font-bold text-indigo-800 border-b pb-2">Assessments (Katc Requirements)</h3>
-<p class="text-slate-600 text-sm">Two formal assessments testing comprehensive understanding with full step-by-step solutions.</p >
-<div class="grid md:grid-cols-2 gap-6">
-<!-- Assessment 1 -->
-<div class="p-6 bg-indigo-50/50 rounded-xl border border-indigo-100 flex flex-col justify-between">
-<div class="space-y-3">
-<span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Assessment 1: Quiz</span>
-<h4 class="font-bold text-lg text-slate-800">Quotient Rule Application</h4>
-<p class="text-sm text-slate-600">
-Evaluate the derivative of the rational function:
+      <p class="video-note">
+        Keith's video link needs to be added here.
+      </p >
+    </div>
 
 
-</p >
-</div>
-<details class="mt-4 text-sm">
-<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">View Full Solution</summary>
-<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1 text-xs">
-<p>
+    <!-- WESLEY VIDEO -->
+    <div class="card lesson-card">
+      <h3>Lesson 2 — Wesley</h3>
+      <p><strong>Quotient Rule and Chain Rule</strong></p >
 
-</p >
-<p>Simplify numerator: x^2 + 6x + 4</p >
-<p>Final Answer: \frac{x^2 + 6x + 4}{(x + 3)^2}</p >
-</div>
-</details>
-</div>
-<!-- Assessment 2 -->
-<div class="p-6 bg-indigo-50/50 rounded-xl border border-indigo-100 flex flex-col justify-between">
-<div class="space-y-3">
-<span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Assessment 2: Assignment Task</span>
-<h4 class="font-bold text-lg text-slate-800">Combined Rules & Tangent Line</h4>
-<p class="text-sm text-slate-600">
-Find the equation of the tangent line to f(x) = x \cdot \sqrt{x^2 + 5} at x = 2.
-</p >
-</div>
-<details class="mt-4 text-sm">
-<summary class="cursor-pointer text-indigo-600 font-medium hover:underline">View Full Solution</summary>
-<div class="mt-2 p-3 bg-white rounded border text-slate-700 space-y-1 text-xs">
-<p>1. Use Product & Chain rules to find f'(x).</p >
-<p>2. Substitute x = 2 to find slope m.</p >
-<p>3. Find point (2, f(2)).</p >
-<p>4. Point-slope form gives the final linear equation.</p >
-</div>
-</details>
-</div>
-</div>
-</section>
+      <h4>Part A: Quotient Rule</h4>
+      <p>When one function is divided by another, we use:</p >
+
+      <div class="formula">
+        $$y=\frac{u}{v}$$
+        $$y'=\frac{u'v-uv'}{v^2}$$
+      </div>
+
+      <p>
+        The derivative of the numerator multiplied by
+        the denominator, minus the numerator multiplied
+        by the derivative of the denominator, all divided
+        by the denominator squared.
+      </p >
+
+      <h4>Part B: Chain Rule</h4>
+      <p>For composite functions, we use:</p >
+
+      <div class="formula">
+        $$y=f(g(x))$$
+        $$y'=f'(g(x))\cdot g'(x)$$
+      </div>
+
+      <p>
+        First differentiate the outer function, keeping
+        the inner function unchanged. Then multiply by
+        the derivative of the inner function.
+      </p >
+
+      <div class="video-frame">
+        <iframe
+          src="https://drive.google.com/file/d/14HmGsqvn8SZn_4jkv_yMrh4imA9FRAob/preview"
+          allow="autoplay"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="video-note">
+        Wesley's video — Quotient Rule and Chain Rule.
+      </p >
+    </div>
+  </section>
+
+
+  <!-- HOMEWORK -->
+  <section id="homework">
+    <h2 class="section-title">3. Homework</h2>
+    <p class="section-description">
+      Practice the differentiation rules with these homework questions.
+      Step-by-step solutions are included in the PDF.
+    </p >
+
+    <div class="card">
+      <div class="resource-card">
+        <div>
+          <h3>MCV4U Calculus — Homework</h3>
+          <p>13 questions · Assignment Problems and Step-by-Step Solutions</p >
+        </div>
+
+        <div class="resource-buttons">
+          <a class="btn" href="pdf/homework.pdf" target="_blank">
+            Open Homework
+          </a >
+          <a class="btn secondary" href="pdf/homework.pdf" download>
+            Download PDF
+          </a >
+        </div>
+      </div>
+
+      <iframe class="pdf-frame" src="pdf/homework.pdf"></iframe>
+    </div>
+  </section>
+
+
+  <!-- QUIZ -->
+  <section id="quiz">
+    <h2 class="section-title">4. Quiz</h2>
+    <p class="section-description">
+      Test your understanding of the differentiation concepts
+      introduced in our lessons.
+    </p >
+
+    <div class="card">
+      <div class="resource-card">
+        <div>
+          <h3>MCV4U Calculus — Quiz</h3>
+          <p>Quiz questions with solutions.</p >
+        </div>
+
+        <div class="resource-buttons">
+          <a class="btn" href="pdf/quiz.pdf" target="_blank">
+            Open Quiz
+          </a >
+          <a class="btn secondary" href="pdf/quiz.pdf" download>
+            Download PDF
+          </a >
+        </div>
+      </div>
+
+      <iframe class="pdf-frame" src="pdf/quiz.pdf"></iframe>
+    </div>
+  </section>
+
+
+  <!-- TEST -->
+  <section id="test">
+    <h2 class="section-title">5. Test</h2>
+    <p class="section-description">
+      Complete this test to review and evaluate your
+      knowledge of differentiation rules.
+    </p >
+
+    <div class="card">
+      <div class="resource-card">
+        <div>
+          <h3>MCV4U Calculus — Test</h3>
+          <p>Test questions with solutions.</p >
+        </div>
+
+        <div class="resource-buttons">
+          <a class="btn" href="pdf/test.pdf" target="_blank">
+            Open Test
+          </a >
+          <a class="btn secondary" href="pdf/test.pdf" download>
+            Download PDF
+          </a >
+        </div>
+      </div>
+
+      <iframe class="pdf-frame" src="pdf/test.pdf"></iframe>
+    </div>
+  </section>
+
 </main>
-<!-- 底部版权 -->
-<footer class="bg-slate-800 text-slate-400 py-6 mt-12 text-center text-sm">
-<p>MCV4U Calculus Culminating Task (CCT) © 2026. All rights reserved.</p >
+
+<footer>
+  <p>MCV4U Calculus Learning Hub</p >
+  <p>Learn · Practice · Improve</p >
+  <p>Created for our Calculus Culminating Project</p >
 </footer>
+
 </body>
 </html>
